@@ -1,125 +1,54 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Para Ana ❤️</title>
-
 <style>
-body{
-margin:0;
-background:#f7efe7;
-font-family:Georgia,serif;
-text-align:center;
-}
-
-#portada{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-h1{
-font-size:48px;
-margin-bottom:15px;
-}
-
-p{
-font-size:22px;
-color:#555;
-}
-
-button{
-margin-top:40px;
-padding:18px 40px;
-font-size:22px;
-background:#d46a6a;
-color:white;
-border:none;
-border-radius:12px;
-cursor:pointer;
-}
-
-button:hover{
-background:#bf5656;
-}
-
-#carta{
-display:none;
-padding:30px;
-}
-
-img{
-width:90%;
-max-width:800px;
-margin:40px auto;
-display:block;
-border-radius:10px;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-
-.final{
-font-size:32px;
-margin:70px;
-font-style:italic;
-}
-</style>
-
-</head>
-
+body{margin:0;font-family:Georgia,serif;background:#efe4d1;color:#3b2b20}
+#cover,#viewer,#end{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px}
+.card{background:#fffdf8;max-width:800px;padding:35px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.2);text-align:center}
+button{padding:14px 28px;border:none;border-radius:10px;background:#8b5e3c;color:#fff;font-size:18px;cursor:pointer;margin:8px}
+img{max-width:90%;max-height:75vh;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.fade{animation:f .6s}@keyframes f{from{opacity:0}to{opacity:1}}
+#viewer,#end{display:none}
+.controls{margin-top:20px}
+</style></head>
 <body>
-
-<div id="portada">
-
+<div id="cover"><div class="card">
 <h1>Para Ana ❤️</h1>
-
-<p>
-Hola, mi vida.
-<br><br>
-Si estás leyendo esto es porque hoy cumplimos medio año juntos.
-<br><br>
+<p>Hola, mi vida.<br><br>
+Si estás leyendo esto es porque hoy cumplimos medio año juntos.<br><br>
 Llevaba tiempo pensando en cómo sorprenderte por este día tan especial.
-Quería que hoy tuvieras esta carta entre tus manos, pero, dada la situación que tenemos y que no he podido disponer de más ayuda, me ha sido imposible hacértela llegar físicamente.
-<br><br>
-Aun así, no quería que la distancia me impidiera regalarte algo en un día tan importante para nosotros.
-Por eso he decidido entregártela de una forma diferente.
-<br><br>
-Espero que la disfrutes tanto como yo disfruté escribiéndola.
-</p>
+Quería que hoy tuvieras esta carta entre tus manos, pero, dada la situación que tenemos y que no he podido disponer de más ayuda, me ha sido imposible hacértela llegar físicamente.<br><br>
+Aun así, no quería que la distancia me impidiera regalarte algo en un día tan importante para nosotros. Por eso he decidido entregártela de una forma diferente.<br><br>
+Espero que la disfrutes tanto como yo disfruté escribiéndola.</p>
+<button onclick="start()">Abrir mi carta ❤️</button><br>
+<button onclick="toggleMusic()">Presiona aquí para escuchar algo especial 🎵</button>
+<audio id="music" src="musica.mp3"></audio>
+</div></div>
 
-<button onclick="abrirCarta()">
-Abrir mi carta ❤️
-</button>
-
+<div id="viewer" class="fade">
+<img id="page" src="carta1.jpg">
+<div class="controls">
+<button onclick="prev()">⬅ Anterior</button>
+<span id="count">1 / 4</span>
+<button onclick="next()">Siguiente ➡</button>
+</div>
 </div>
 
-<div id="carta">
-
-<img src="carta1.jpg">
-<img src="carta2.jpg">
-<img src="carta3.jpg">
-<img src="carta4.jpg">
-
-<div class="final">
-Escrita a mano por David, con mucho amor ❤️
+<div id="end">
+<div class="card fade">
+<img src="final.jpg" style="max-width:400px"><br>
+<h2>Gracias por estos primeros seis meses.</h2>
+<p>Con mucho amor,<br><b>David ❤️</b></p>
 </div>
-
 </div>
 
 <script>
-
-function abrirCarta(){
-
-document.getElementById("portada").style.display="none";
-document.getElementById("carta").style.display="block";
-
-}
-
+const pages=["carta1.jpg","carta2.jpg","carta3.jpg","carta4.jpg"];
+let i=0;
+function start(){cover.style.display="none";viewer.style.display="flex";}
+function show(){page.src=pages[i];count.textContent=(i+1)+" / "+pages.length;}
+function next(){if(i<pages.length-1){i++;show();}else{viewer.style.display="none";end.style.display="flex";}}
+function prev(){if(i>0){i--;show();}}
+function toggleMusic(){const m=document.getElementById('music'); if(m.paused)m.play(); else m.pause();}
 </script>
-
-</body>
-</html>
+</body></html>
