@@ -7,81 +7,124 @@
 <title>Para Ana ❤️</title>
 
 <style>
-
 body{
 margin:0;
-background:#e9dcc8;
+background:#f7efe7;
 font-family:Georgia,serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+text-align:center;
 }
 
-.caja{
-background:white;
-width:90%;
-max-width:420px;
-padding:40px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 10px 35px rgba(0,0,0,.2);
+#portada{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
 
 h1{
-font-size:42px;
-margin-bottom:10px;
+font-size:48px;
+margin-bottom:15px;
 }
 
 p{
-font-size:20px;
-line-height:1.6;
+font-size:22px;
+color:#555;
 }
 
 button{
-margin-top:30px;
-padding:15px 35px;
-border:none;
-background:#8b5e3c;
+margin-top:40px;
+padding:18px 40px;
+font-size:22px;
+background:#d46a6a;
 color:white;
-border-radius:40px;
-font-size:18px;
+border:none;
+border-radius:12px;
 cursor:pointer;
 }
 
 button:hover{
-opacity:.9;
+background:#bf5656;
 }
 
+#carta{
+display:none;
+padding:30px;
+}
+
+img{
+width:90%;
+max-width:800px;
+margin:40px auto;
+display:block;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.final{
+font-size:32px;
+margin:70px;
+font-style:italic;
+}
 </style>
 
 </head>
 
 <body>
 
-<div class="caja">
+<div id="portada">
 
-<h1>Para Ana</h1>
+<h1>Para Ana ❤️</h1>
 
 <p>
-4 de julio de 2026
+Si estás leyendo esto es porque hoy celebramos nuestros primeros seis meses.
 </p>
 
 <p>
-Hoy quería regalarte algo diferente.
-<br><br>
-No un mensaje.
-<br>
-No un PDF.
-<br><br>
-Algo hecho únicamente para ti.
+Tenía un plan mucho más bonito...
 </p>
 
-<button onclick="window.location='carta1.jpg'">
-Abrir mi carta
+<p>
+Quería que hoy tuvieras esta carta entre tus manos,
+pero como estás viviendo esta aventura por Europa,
+ha sido imposible hacerla llegar físicamente.
+</p>
+
+<p>
+Así que quiero que la abras aquí,
+como si acabara de entregártela.
+</p>
+
+<button onclick="abrirCarta()">
+Abrir mi carta ❤️
 </button>
 
 </div>
+
+<div id="carta">
+
+<img src="carta1.jpg">
+<img src="carta2.jpg">
+<img src="carta3.jpg">
+<img src="carta4.jpg">
+
+<div class="final">
+Escrita a mano por David, con mucho amor ❤️
+</div>
+
+</div>
+
+<script>
+
+function abrirCarta(){
+
+document.getElementById("portada").style.display="none";
+document.getElementById("carta").style.display="block";
+
+}
+
+</script>
 
 </body>
 </html>
